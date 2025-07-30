@@ -62,3 +62,4 @@ def get_titles(url: str = URL) -> List[str]:
     """List titles in feed."""
     articles = _feed(url).entries
     return [a.title for a in articles]
+
