@@ -15,7 +15,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 keywords = ["feed", "reader", "tutorial"]
-dependencies = ["feedparser", "html2text", 'tomli; python_version < "3.11"']
+dependencies = [
+    "feedparser",
+ "html2text",
+ "pytest-cov>=6.2.1",
+ 'tomli; python_version < "3.11"',
+]
 requires-python = ">=3.9"
 
     [project.optional-dependencies]
