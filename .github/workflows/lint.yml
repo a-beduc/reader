@@ -1,5 +1,6 @@
+# https://docs.astral.sh/uv/guides/integration/github/#installation
+# https://realpython.com/github-actions-python/#finalizing-the-testing-workflow
 name: Lint Python Code
-
 
 on:
   pull_request:
@@ -15,13 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - name: Set up python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-          cache: "pip"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install ruff
-      - name: Run Ruff
-        run: ruff check --output-format=github
+          python-version-file: ".python-version"
+
+      - name: Install cached uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.7.19"
+          enable-cache: true
+
+      - name: Run ruff
+        run: uvx ruff check --output-format=github
