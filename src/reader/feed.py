@@ -62,3 +62,14 @@ def get_titles(url: str = URL) -> List[str]:
     """List titles in feed."""
     articles = _feed(url).entries
     return [a.title for a in articles]
+
+
+def untested_func(z, y, x):
+    if z:
+        return True
+    elif y:
+        return 5
+    elif x:
+        return 4
+    else:
+        return False
