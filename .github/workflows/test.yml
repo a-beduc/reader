@@ -34,9 +34,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen --extra dev
 
-      - name: Run Pytest
+      - name: Run Pytest (coverage >= 90%)
         run: |
-          pytest \ 
+          uv run pytest \ 
           --cov="." \
           --cov-report=term-missing \
           --cov-fail-under=90
