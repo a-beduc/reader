@@ -1,0 +1,21 @@
+name: github context
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Echo
+        run: echo "${{ github.head_ref }} | ${{ github.ref_name }} | ${{ github.sha }}"
